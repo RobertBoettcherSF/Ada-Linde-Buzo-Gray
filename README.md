@@ -24,25 +24,25 @@ and CVT relaxation). LBG uses Lloyd as its inner refinement step.
   *fixed-size* set of reconstruction points by alternating nearest-neighbor
   assignment and centroid updates.
 - **LBG** adds **codebook splitting**: start from the global training mean
-  (one codeword), then repeatedly replace each codevector \(y\) with
-  \(\{y,\ y+\varepsilon\}\) (a small perturbation) and re-run Lloyd. Because
+  (one codeword), then repeatedly replace each codevector $y$ with
+  $\{y, y+\varepsilon\}$ (a small perturbation) and re-run Lloyd. Because
   every previous codevector remains in the enlarged book, the new codebook is
   at least as good as the old one before Lloyd improves it further.
 
-Splitting is the usual practical way to design a VQ codebook of size \(M\)
-(often a power of two) without a poor random initialization of all \(M\)
+Splitting is the usual practical way to design a VQ codebook of size $M$
+(often a power of two) without a poor random initialization of all $M$
 words at once.
 
 ## Project Overview
 
 | Concern | Approach | Notes |
 | --- | --- | --- |
-| **Metric** | Euclidean \(L_2\) / SSE | `Distance`, `Squared_Distance`, `Distortion` |
+| **Metric** | Euclidean $L_2$ / SSE | `Distance`, `Squared_Distance`, `Distortion` |
 | **Inner loop** | Lloyd assign → centroid | `Run_Lloyd` |
-| **Growth** | Split \(y \mapsto \{y,\ y+\varepsilon\}\) | `Split_Codebook` |
-| **Full design** | Mean → split+Lloyd until \(M\) | `Run_LBG` / `Design_Codebook` |
+| **Growth** | Split $y \mapsto \{y, y+\varepsilon\}$ | `Split_Codebook` |
+| **Full design** | Mean → split+Lloyd until $M$ | `Run_LBG` / `Design_Codebook` |
 | **Empty cell** | Keep previous codevector | Documented; `Empty_Flags` |
-| **Stop** | Relative distortion change \(\le\) `Stop_Epsilon` | or `Max_Lloyd_Iters` |
+| **Stop** | Relative distortion change $\le$ `Stop_Epsilon` | or `Max_Lloyd_Iters` |
 
 ## Features
 
