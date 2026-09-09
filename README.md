@@ -90,20 +90,20 @@ lloyd(codebook, training):
 **Empty cells:** if a cluster has no training vectors, this package **keeps**
 the previous codevector and sets `Empty(k) := True`.
 
-### Full design to \(M\) codewords
+### Full design to $M$ codewords
 
-1. \(c_0 \leftarrow\) mean of the training set; codebook \(\leftarrow \{c_0\}\).
-2. While \(|\mathrm{codebook}| < M\): split each vector into \(y\) and
-   \(y+\varepsilon\cdot e_1\) (scalar \(\varepsilon\) on the first coordinate,
+1. $c_0 \leftarrow$ mean of the training set; codebook $\leftarrow \{c_0\}$.
+2. While $|\mathrm{codebook}| < M$: split each vector into $y$ and
+   $y+\varepsilon\cdot e_1$ (scalar $\varepsilon$ on the first coordinate,
    forming a small perturbation vector); run Lloyd until the relative
    distortion change is below `Stop_Epsilon` (or `Max_Lloyd_Iters`).
 3. Return final codebook, assignments, and distortion.
 
 If a doubling would exceed `Target_Size`, only the first `Target_Size`
-entries of the split book are kept (supports non–power-of-two \(M\)).
+entries of the split book are kept (supports non–power-of-two $M$).
 
 Distortion is squared Euclidean error
-\(\sum_i \|x_i - y_{\ell_i}\|^2\).
+$\sum_i \|x_i - y_{\ell_i}\|^2$.
 
 ## Build and test
 
