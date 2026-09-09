@@ -50,11 +50,11 @@ words at once.
 | --- | --- | --- |
 | Caps | `Max_Points`, `Max_Dims`, `Max_Codewords` | Fixed educational limits |
 | Types | `Point`, `Dataset` / `Training_Set`, `Codebook`, `Labels`, `Parameters`, `LBG_Result` | Domain model |
-| Geometry | `Distance`, `Squared_Distance`, `Extract_Point` / `Extract_Codeword` | \(L_2\) helpers |
+| Geometry | `Distance`, `Squared_Distance`, `Extract_Point` / `Extract_Codeword` | $L_2$ helpers |
 | Partition | `Nearest_Codeword`, `Assign` | Voronoi of the sample |
 | Update | `Update_Centroids`, `Centroid`, `Mean_Point` | Means; empty → keep |
 | Quality | `Distortion`, `Average_Distortion` | Total / mean SSE |
-| Split | `Split_Codebook` | Double with \(+\varepsilon\) |
+| Split | `Split_Codebook` | Double with $+\varepsilon$ |
 | Fit | `Run_Lloyd`, `Run_LBG` / `Design_Codebook` | Refine / full design |
 
 Strong typing uses domain types (`Real` digits 12, …). Public subprograms
